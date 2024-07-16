@@ -1,0 +1,21 @@
+{% extends 'users/base.html' %} {%load static%} {% block content %}
+<div class="box">
+  <h2>About E-Learn</h2>
+  <h6>
+    Welcome to Elearn, the ultimate destination for online education! Our
+    mission is to empower individuals around the world to learn, grow, and
+    achieve their full potential through accessible and affordable education.
+  </h6>
+</div>
+<style>
+  .container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  .body {
+    background-image: url("{% static 'users/image/elearn.webp' %}");
+    background-size: cover;
+  }
+</style>
+
+{% endblock content %}

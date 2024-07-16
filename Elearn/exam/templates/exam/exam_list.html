@@ -1,0 +1,6 @@
+{% extends "users/base.html" %}
+{% block content %}
+    {% for exam in exams %}
+        <p><a href="{% url 'exam-detail' pk=exam.course.id exam_id=exam.id %}">{{ exam.course.title }} - {{ exam.Exam_date }}</a></p>
+    {% endfor %}
+{% endblock content %}

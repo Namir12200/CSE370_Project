@@ -1,0 +1,10 @@
+{% extends 'users/base.html' %} {% block content %}
+<h1>Courses</h1>
+{% for course in courses %}
+<h2>{{ course.title }}</h2>
+<h3>By {{ course.owner.user.username }}</h3>
+<h3>Price: {{ course.fees }}</h3>
+<h3>Duration: {{ course.timeline }}</h3>
+<p>{{ course.description }}</p>
+<button><a href="{% url 'course-enroll' course.pk %}">Enroll</a></button>
+{% endfor %} {% endblock content %}

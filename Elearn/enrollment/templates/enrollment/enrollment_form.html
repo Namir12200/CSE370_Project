@@ -1,0 +1,9 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <h1>Do you want to enroll in this course?</h1>
+        <button type="submit">Enroll</button>
+    </form>
+{% endblock content %}

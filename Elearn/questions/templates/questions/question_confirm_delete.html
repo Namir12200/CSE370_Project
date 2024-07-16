@@ -1,0 +1,6 @@
+{% extends "users/base.html" %}
+{% block content %}
+    <p>Are you sure you want to delete the question?</p>
+    <button type="submit">Yes</button>
+    <button><a href="{% url 'question_detail' qs_id=object.id %}">No</a></button>
+{% endblock content %}

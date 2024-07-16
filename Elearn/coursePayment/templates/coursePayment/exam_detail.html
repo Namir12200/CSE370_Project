@@ -1,0 +1,6 @@
+{% extends "users/base.html" %}
+
+{% block content %}
+    <p>{{ exam.course.title }} - {{ exam.Exam_date }}</p>
+    <button><a href="{% url 'st-exam' course_pk=exam.course.id pk=exam.id %}">Take Exam</a></button>
+{% endblock content %}

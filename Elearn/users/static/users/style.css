@@ -1,0 +1,10 @@
+body {
+  background-image: url("/static/login/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.center-container {
+  text-align: center;
+  margin-top: 200px;
+}

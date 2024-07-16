@@ -1,0 +1,59 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to E-Learn</title>
+    <style>
+      body {
+        background-image: url("{% static 'users/image/2201972.jpg' %}");
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+      }
+
+      .box {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 600px;
+        margin: auto;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .button {
+        display: inline-table;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin: 10px;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: #3e8e41;
+      }
+
+      .logout {
+        margin-left: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h2>Welcome to E-Learn</h2>
+      {% if user.is_authenticated %}
+      <h3>{{ user.username }}</h3>
+      <a class="button logout" href="{% url 'logout' %}">Logout</a>
+      {% else %}
+      <a class="button" href="{% url 'login' %}">Login</a>
+      <a class="button" href="{% url 'register' %}">Register</a>
+      {% endif %} {% block content %}{% endblock content %}
+    </div>
+  </body>
+</html>

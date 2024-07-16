@@ -1,0 +1,139 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>E-Learn</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("{% static 'users/image/elearn2.jpg' %}");
+        background-size: cover;
+      }
+
+      .header {
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+      }
+
+      .brand {
+        font-size: 28px;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav li {
+        margin-right: 10px;
+      }
+
+      .nav li a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .btn-group {
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+      }
+
+      .btn {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 12px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 10px;
+        border-radius: 5px;
+      }
+
+      .btn:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="brand">E-Learn</h1>
+      <nav>
+        <ul class="nav">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">Forum</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+  <style>
+    .box {
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      margin: auto;
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-table;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #3e8e41;
+    }
+
+    .logout {
+      margin-left: flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Welcome to E-Learn</h2>
+    {% if user.is_authenticated %}
+    <h3>{{ user.username }}</h3>
+    <a class="button logout" href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a class="button" href="{% url 'login' %}">Login</a>
+    <a class="button" href="{% url 'register' %}">Register</a>
+    {% endif %} {% block content %}{% endblock content %}
+  </div>
+</body>
+</html>
+

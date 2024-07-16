@@ -1,0 +1,192 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>E-Learn</title>
+    <style>
+      .search-form {
+        position: absolute;
+        top: 10px;
+        right: 150px;
+      }
+
+      .search-form input[type="text"],
+      .search-form button[type="submit"] {
+        height: 30px;
+        padding: 5px 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+      }
+
+      .search-form button[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        margin-left: 5px;
+        cursor: pointer;
+      }
+
+      .search-form button[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("{% static 'users/image/elearn2.jpg' %}");
+        background-size: cover;
+      }
+
+      .header {
+        background-color: rgb(50, 50, 50);
+        color: rgb(211, 209, 209);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+      }
+
+      .brand {
+        font-size: 28px;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        margin: 0 5vh 0 10vh;
+        padding: 10px;
+      }
+
+      .nav li {
+        margin-right: 20px;
+      }
+
+      .nav li a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .btn-group {
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+      }
+
+      .btn {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 12px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 10px;
+        border-radius: 5px;
+      }
+
+      .btn:hover {
+        background-color: #3e8e41;
+      }
+      .user-info {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+      }
+      .user-info img {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+      }
+      .user-info .username {
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+      }
+      .box {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 600px;
+        margin: auto;
+        margin-top: 25vh;
+        margin-bottom: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .button {
+        display: inline-table;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin: 10px;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: #3e8e41;
+      }
+
+      .logout {
+        margin-left: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="brand">E-Learn</h1>
+      <nav>
+        <ul class="nav">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">Forum</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="user-info">
+        {% if user.is_authenticated %}
+        <a href="{% url 'profile' %}">
+          <img
+            src="{% static 'users/image/profile-icon3.jpeg' %}"
+            alt="Profile Icon"
+          />
+          <span class="username">{{ user.username }}</span>
+        </a>
+        {% endif %}
+      </div>
+      <div class="search-form">
+        <form method="get" action="{% url 'searchcourse' %}">
+          <input type="text" name="q" placeholder="Search courses" />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+    </header>
+    <div class="box">
+      <h2>Welcome to E-Learn</h2>
+      {% if user.is_authenticated %}
+      <h3>{{ user.username }}</h3>
+      <a class="button logout" href="{% url 'logout' %}">Logout</a>
+      {% else %}
+      <a class="button" href="{% url 'login' %}">Login</a>
+      <a class="button" href="{% url 'register' %}">Register</a>
+      {% endif %}{% block content %}{% endblock content %}
+    </div>
+  </body>
+</html>

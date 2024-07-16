@@ -1,0 +1,11 @@
+{% extends "users/base.html" %}
+{% block content %}
+    <p>{{ question.qs }}</p>
+    <p>{{ question.option_1 }}</p>
+    <p>{{ question.option_2 }}</p>
+    <p>{{ question.option_3 }}</p>
+    <p>{{ question.option_4 }}</p>
+    <p>{{ question.correct }}</p>
+    <button><a href="{% url 'question_update' pk=exam.course.id exam_id=exam.id qs_id=object.id %}">Update</a></button>
+    <button><a href="{% url 'question_delete' pk=exam.course.id exam_id=exam.id qs_id=object.id %}">Delete</a></button>
+{% endblock content %}

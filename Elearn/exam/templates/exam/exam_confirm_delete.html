@@ -1,0 +1,8 @@
+{% extends "users/base.html" %}
+{% block content %}
+    <form method="POST">
+        Are you sure you want ot delete this exam?
+        <button type="submit">Yes</button>
+        <button><a href="{% url 'exam-detail' pk=exam.course.id exam_id=exam.id %}">No</a></button>
+    </form>
+{% endblock content %}

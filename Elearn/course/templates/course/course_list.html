@@ -1,0 +1,7 @@
+{% extends 'users/base.html' %} {% block content %} {% for course in courses %}
+<h1><a href="{% url 'course-detail' course.id %}">{{ course.title }}</a></h1>
+<h3>By {{ course.owner.user.username }}</h3>
+<p>Price: {{ course.fees }}</p>
+<h3>Duration: {{ course.timeline }}</h3>
+<p>{{ course.description }}</p>
+{% endfor %} {% endblock content %}

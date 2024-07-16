@@ -1,0 +1,16 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'coursePayment/jquery-3.6.4.js' %}" defer></script>
+    <script src="{% static 'coursePayment/quiz.js' %}" defer></script>
+{% endblock scripts %}
+
+{% block content %}
+    <h2>{{ course.title }} Exam</h2>
+    <form id="quiz-form">
+        {% csrf_token %}
+        <div id="quiz-box"></div>
+        <button type="submit">Save</button>
+    </form>
+{% endblock content %}

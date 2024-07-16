@@ -1,0 +1,11 @@
+{% extends "users/base.html" %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        Account number: <input type="text"/>
+        <p>Are you sure you want to but this course?</p>
+        <button type="submit">Yes</button>
+        <button><a href="{% url 'enrolled-courses' %}">No</a></button>
+    </form>
+{% endblock content %}

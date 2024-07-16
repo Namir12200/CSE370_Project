@@ -1,0 +1,11 @@
+{% extends "users/base.html" %}
+{% block content %}
+    <a href="{% url 'content-list' object.course_id.id %}"><h1>{{ object.course_id.title }}</h1>
+        <h3>By {{ object.course_id.owner.user.username }}</h3>
+        <h3>Price: {{ object.course_id.fees }}</h3>
+        <h3>Timeline: {{ object.course_id.timeline }}</h3>
+        <p>{{ object.course_id.description }}</p></a>
+    <button><a href="{% url 'unenroll-course' object.id %}">Unenroll</a></button>
+    <button><a href="{% url 'purchase-course' object.id %}">Buy Course</a></button>
+    <button><a href="{% url 'course-forum' object.course_id.id %}">Forum</a></button>
+{% endblock content %}
